@@ -1,0 +1,80 @@
+<ul id="slide-out" class="sidenav sidenav-fixed">
+    <div class="row" style="margin-top: 5%"></div>
+    <li>
+        <mat-form-field style="background-color:#4EB1BF;margin-left: 5%">
+            <mat-select placeholder="Filter" style="color:black"> 
+              <mat-option (click)="filon($event)" *ngFor="let data of datas" [value]="data.value">
+                {{data.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </li>
+    <li>
+        <label for="input_text" >Enter Filter</label>
+        <input class="col s2" id="input_text" type="text" [(ngModel)]="filterdata" data-length="4">
+        
+    </li>
+    <li><button class="btn waves-effect waves-light" type="submit" name="action" (click)="filter()">Submit
+        <i class="material-icons right">submit</i>
+      </button>
+    </li>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+<div class="container">
+  <div class="row valign-wrapper">
+    <div class="col s9 offset-s2  valign">
+          
+<div style="text-align: center;">
+  <div *ngFor="let wine of wineArr" class="row">
+    <!--Material design card-->
+    <mat-card class="example-card valign z-depth-4" style="background-color: #222930">
+      <mat-card-header>
+        <mat-card-title class="center-align" >
+          <h3 style="color:#4EB1BA" class="customLink" (click)="redirect(wine._id)">{{wine.variety}}</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        
+          <span style="color:#4EB1BF;margin-left: 0%">Price : </span><span style="color:#E9E9E9">{{wine.price}}</span>
+          <span style="padding:5%"></span>
+          <span style="color:#4EB1BF;">Designation : </span><span style="color:#E9E9E9">{{wine.designation}}</span>
+          <span style="padding:5%"></span>
+          <span style="color:#4EB1BF;">Point : </span><span style="color:#E9E9E9">{{wine.points}}</span>
+          <br>
+        <p style="color: #E9E9E9;text-align: justify">
+          {{wine.description}}
+        </p>
+        <span style="color:#4EB1BF;margin-left: 0%">Winery : </span><span style="color:#E9E9E9">{{wine.winery}}</span>
+        <span style="padding:5%"></span>
+        <span style="color:#4EB1BF;margin-left: 0%">Country : </span><span style="color:#E9E9E9">{{wine.country}}</span>
+        <span style="padding:5%"></span>
+       <div class="row"></div>
+        <span style="color:#4EB1BF;margin-left: 0%">Province : </span><span style="color:#E9E9E9">{{wine.province}}</span>
+          <span style="padding:5%"></span>
+          <span style="color:#4EB1BF;">Region_1 : </span><span style="color:#E9E9E9">{{wine.region_1}}</span>
+          <span style="padding:5%"></span>
+          <span style="color:#4EB1BF;">Region_2 : </span><span style="color:#E9E9E9">{{wine.region_2}}</span>
+      </mat-card-content>
+    </mat-card>
+    <!-- Seperator division to provide space between two cards -->
+    <div class="seperator"></div>
+  </div>
+</div>
+
+<ul class="pagination">
+  <!-- <li><a href="#!"><i class="material-icons">chevron_left</i></a></li> -->
+  <div *ngFor="let i of numbers">
+    <li class="active" style="cursor: pointer;" (click)="pagechange(i+1)">&nbsp;{{i+1}}&nbsp;</li>&nbsp;
+  </div>
+    <div class="input-field col s3">
+      <input class="col s2" id="input_text" type="text" [(ngModel)]="pageno" data-length="4">
+      <label for="input_text" >Enter Page</label>
+      <button class="btn waves-effect waves-light" type="submit" name="action" (click)="pagechange(pageno)">Submit
+        <i class="material-icons right">submit</i>
+      </button>
+    </div>
+        
+  <!-- <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li> -->
+</ul>
+          </div></div></div>
